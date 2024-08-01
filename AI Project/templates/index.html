@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Action Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        #image-preview {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #image-preview img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Action Recognition</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">
+            Select an image
+        </label>
+        <input id="file-upload" type="file" name="image" accept="image/*" onchange="previewImage(event)">
+        <input type="submit" value="Submit">
+    </form>
+    {% if action_label is defined %}
+        <h2>Predicted Action: {{ action_label }}</h2>
+    {% endif %}
+    <div id="image-preview"></div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const img = document.createElement('img');
+                img.src = reader.result;
+                const previewContainer = document.getElementById('image-preview');
+                previewContainer.innerHTML = '';
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Action Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        #image-preview {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #image-preview img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Action Recognition</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">
+            Select an image
+        </label>
+        <input id="file-upload" type="file" name="image" accept="image/*" onchange="previewImage(event)">
+        <input type="submit" value="Submit">
+    </form>
+    {% if action_label is defined %}
+        <h2>Predicted Action: {{ action_label }}</h2>
+    {% endif %}
+    <div id="image-preview"></div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const img = document.createElement('img');
+                img.src = reader.result;
+                const previewContainer = document.getElementById('image-preview');
+                previewContainer.innerHTML = '';
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Action Recognition</title>
+</head>
+<body>
+    <h1>Action Recognition</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+        <input type="submit" value="Submit">
+    </form>
+    {% if action_label is defined %}
+        <h2>Predicted Action: {{ action_label }}</h2>
+    {% endif %}
+    <div id="image-preview"></div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const img = document.createElement('img');
+                img.src = reader.result;
+                img.style.maxWidth = '300px';
+                img.style.maxHeight = '300px';
+                const previewContainer = document.getElementById('image-preview');
+                previewContainer.innerHTML = '';
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
+
+
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Action Recognition</title>
+</head>
+<body>
+    <h1>Action Recognition</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Submit">
+    </form>
+    {% if action_label is defined %}
+        <h2>Predicted Action: {{ action_label }}</h2>
+    {% endif %}
+</body>
+</html> --> 
